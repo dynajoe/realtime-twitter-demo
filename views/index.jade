@@ -1,0 +1,61 @@
+doctype 5
+html(lang="en")
+   head
+      title Twitter Scanner
+      script(type="text/javascript", src="jquery.js")
+      script(type="text/javascript", src="socket.io/socket.io.js")
+      style(type="text/css")
+         html, * {
+            margin: 0;
+            padding: 0;
+         }
+         body {
+            background-color: black;
+            font-size: 1.4em;
+            padding: 20px;
+         }
+         ul {
+            list-style-type: none;
+         }
+         .tweet {
+            color: white;
+            text-shadow: #333 1px 1px 4px;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            border: 1px solid black;
+            background-image: -webkit-linear-gradient(top, #FF5A00 0%, #FFAE00 100%);  
+            background-image: -moz-linear-gradient(top, #FF5A00 0%, #FFAE00 100%);  
+            background-image: -ms-linear-gradient(top, #FF5A00 0%, #FFAE00 100%);  
+            background-image: -o-linear-gradient(top, #FF5A00 0%, #FFAE00 100%);  
+            background-image: linear-gradient(top, #FF5A00 0%, #FFAE00 100%);
+         }
+         strong {
+            color: #FFFF0A;
+            text-decoration: underline;
+         }
+         .tweet img {
+            float: left;
+            width:48px;
+            height: 48px;
+            margin-right: 10px;
+            border-radius: 4px;
+
+         }
+         .clear {
+            clear: both;
+         }
+      script(type="text/javascript")
+         var socket = io.connect('/');
+         $(document).ready(function () {
+            socket.on('data', function (data) {
+               var term = data.term;
+               data = data.data;
+               var regex = new RegExp( '(' + term + ')', 'gi' );
+               data.text = data.text.replace( regex, "<strong>$1</strong>" );
+               $('<li class="tweet"><div><img src="' + data.user.profile_image_url+ '"/><h2>' + data.user.name+' - @' + data.user.screen_name+ '</h2><p>' + data.text + '</p></div><div class="clear"/></li>').hide().prependTo('.tweets').fadeIn();
+            })
+         });
+   body
+      ul.tweets
+   
