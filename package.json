@@ -8,10 +8,12 @@
   "license": "BSD",
   "description": "ERROR: No README.md file found!",
   "dependencies": {
-    "request": "~2.21.0",
-    "ntwitter": "~0.5.0",
-    "socket.io": "~0.9.14",
     "express": "~3.2.4",
-    "jade": "~0.30.0"
+    "jade": "~0.30.0",
+    "lodash": "^3.10.1",
+    "ntwitter": "~0.5.0",
+    "request": "~2.21.0",
+    "socket.io": "~0.9.14",
+    "twit": "^2.1.1"
   }
 }

@@ -4,11 +4,20 @@ html(lang="en")
       title Twitter Scanner
       script(type="text/javascript", src="jquery.js")
       script(type="text/javascript", src="socket.io/socket.io.js")
+      link(rel="stylesheet", href="bootstrap.css")
       link(rel="stylesheet", href="main.css")
 
       script(type="text/javascript")
          var socket = io.connect('/');
+
          $(document).ready(function () {
+            $('#search-form').submit(function () {
+               var newTerm = $('input[name="term"]').val();
+               socket.emit('term', (newTerm || "").trim());
+               $('.tweet').remove();
+               return false;
+            });
+
             socket.on('data', function (data) {
                var term = data.term;
                data = data.data;
@@ -18,5 +27,9 @@ html(lang="en")
             })
          });
    body
-      ul.tweets
-   
+      div.container
+         form(id="search-form", class="form-inline")
+            div.form-group
+               input(name="term", type="text", class="form-control")
+               button(type="submit", class="btn btn-primary") Search
+         ul.tweets

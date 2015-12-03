@@ -3,38 +3,38 @@ html, * {
    padding: 0;
 }
 body {
-   background-color: black;
-   font-size: 1.1em;
-   padding: 20px;
+   font-size: 16px;
 }
 ul {
    list-style-type: none;
 }
+
 .tweet {
-   color: white;
-   text-shadow: #333 1px 1px 4px;
    padding: 10px;
    margin: 10px;
    border-radius: 5px;
    border: 1px solid black;
-   background-image: -webkit-linear-gradient(top, #FF5A00 0%, #FFAE00 100%);  
-   background-image: -moz-linear-gradient(top, #FF5A00 0%, #FFAE00 100%);  
-   background-image: -ms-linear-gradient(top, #FF5A00 0%, #FFAE00 100%);  
-   background-image: -o-linear-gradient(top, #FF5A00 0%, #FFAE00 100%);  
-   background-image: linear-gradient(top, #FF5A00 0%, #FFAE00 100%);
+   background-color: #eee;
+}
+
+.tweet h2 {
+   font-size: 1.5em;
 }
 strong {
-   color: #FFFF0A;
+   color: green;
+   font-size: 1.4em;
+   font-weight: bold;
    text-decoration: underline;
 }
+
 .tweet img {
    float: left;
-   width:48px;
-   height: 48px;
+   width: 75px;
+   height: 75px;
    margin-right: 10px;
    border-radius: 4px;
-
 }
+
 .clear {
    clear: both;
 }
